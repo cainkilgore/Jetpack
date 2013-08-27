@@ -1,0 +1,8 @@
+name: 'Super-Jetpack'
+author: 'ThatJavaGuy'
+version: '1.7'
+main: com.cainkilgore.jetpack.Jetpack
+commands:
+   jetpack:
+       description: 'Gives you an item of the Super Jetpack plugin'
+       usage: /<command> [give/checkforupdates/list] <item>
