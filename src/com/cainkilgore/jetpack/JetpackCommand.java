@@ -1,13 +1,14 @@
 package com.cainkilgore.jetpack;
 
+import java.util.Random;
+
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.material.MaterialData;
+import org.bukkit.util.Vector;
 
 public class JetpackCommand implements CommandExecutor {
 	
@@ -59,6 +60,16 @@ public class JetpackCommand implements CommandExecutor {
 					}
 					return true;
 				}
+				
+				if(args[1].equalsIgnoreCase("solarRegenerationUnit")) {
+					if(Check.hasPermission(player, "superjetpack.give.solarregenerationunit")) {
+						player.getInventory().addItem(Jetpack.solarHelmet);
+						player.sendMessage(ChatColor.GOLD + "[Super Jetpack] Added Solar Regeneration Unit to your Inventory");
+					}
+					return true;
+				}
+				
+				
 				player.sendMessage(ChatColor.GOLD + "[Super Jetpack] Invalid item specified.");
 			}
 			
@@ -72,7 +83,7 @@ public class JetpackCommand implements CommandExecutor {
 			if(args[0].equalsIgnoreCase("list")) {
 				if(Check.hasPermission(player, "superjetpack.list")) {
 					String [] availableItems = { "emeraldOfFlight", "jetpack", "advancedJetpack",
-												 "featherOfRegeneration", "bootsOfFalling" };
+												 "featherOfRegeneration", "bootsOfFalling", "solarRegenerationUnit", };
 					
 					StringBuilder x = new StringBuilder();
 					for(String i : availableItems) {
@@ -82,6 +93,32 @@ public class JetpackCommand implements CommandExecutor {
 					player.sendMessage(ChatColor.GOLD + "[Super Jetpack] " + x.toString().trim());
 					return false;
 				}
+			}
+			
+			if(args[0].equalsIgnoreCase("toggleparticles")) {
+				if(Check.hasPermission(player, "superjetpack.toggleparticles")) {
+					if(!Jetpack.playersDeniedParticles.contains(player.getName())) {
+						Jetpack.playersDeniedParticles.add(player.getName());
+						player.sendMessage(ChatColor.GOLD + "[Super Jetpack] You will no longer see flying particles.");
+						return true;
+					}
+					Jetpack.playersDeniedParticles.remove(player.getName());
+					player.sendMessage(ChatColor.GOLD + "[Super Jetpack] You will now see flying particles.");
+				}
+				return true;
+			}
+			
+			if(args[0].equalsIgnoreCase("togglescoreboard")) {
+				if(Check.hasPermission(player, "superjetpack.togglescoreboard")) {
+					if(!Jetpack.playersDeniedScoreboard.contains(player.getName())) {
+						Jetpack.playersDeniedScoreboard.add(player.getName());
+						player.sendMessage(ChatColor.GOLD + "[Super Jetpack] You will no longer see the scoreboard.");
+						return true;
+					}
+					Jetpack.playersDeniedScoreboard.remove(player.getName());
+					player.sendMessage(ChatColor.GOLD + "[Super Jetpack] You will now see the scoreboard.");
+				}
+				return true;
 			}
 			
 		}

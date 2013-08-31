@@ -57,15 +57,15 @@ public class Recipes {
 		Bukkit.getServer().addRecipe(advJetpackRecipe);
 	}
 	
-//	public static void registerSolarHelmetRecipe() {
-//		final ShapedRecipe solarRecipe = new ShapedRecipe(Jetpack.solarHelmet);
-//		solarRecipe.shape("SSS", "DCD", "ENE");
-//		solarRecipe.setIngredient('S', Material.DAYLIGHT_DETECTOR);
-//		solarRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
-//		solarRecipe.setIngredient('C', Material.CHAINMAIL_HELMET);
-//		solarRecipe.setIngredient('E', Material.EMERALD_BLOCK);
-//		solarRecipe.setIngredient('N', Material.NETHER_STAR);
-//		Bukkit.getServer().addRecipe(solarRecipe);
-//	}
+	public static void registerSolarHelmetRecipe() {
+		final ShapedRecipe solarRecipe = new ShapedRecipe(Jetpack.solarHelmet);
+		solarRecipe.shape("SSS", "DCD", "ENE");
+		solarRecipe.setIngredient('S', Material.DAYLIGHT_DETECTOR);
+		solarRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
+		solarRecipe.setIngredient('C', Material.CHAINMAIL_HELMET);
+		solarRecipe.setIngredient('E', Material.EMERALD_BLOCK);
+		solarRecipe.setIngredient('N', Material.NETHER_STAR);
+		Bukkit.getServer().addRecipe(solarRecipe);
+	}
 	
 }

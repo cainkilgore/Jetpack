@@ -55,7 +55,18 @@ public class JetpackEvents implements Listener {
 					}
 					Vector nearBlock = new Vector(e.getPlayer().getLocation().getDirection().getX() * getXSpeed(e.getPlayer()), getRecommendedVelocity(e.getPlayer()), e.getPlayer().getLocation().getDirection().getZ() * getZSpeed(e.getPlayer()));
 					 e.getPlayer().setVelocity(nearBlock);
+					e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.BREATH, 1, 1);
 					
+					if(!Jetpack.playersDeniedScoreboard.contains(e.getPlayer().getName())) {
+						if(Check.wearingJetpack(e.getPlayer())) {
+							ScoreboardInit.startScoreboard(e.getPlayer(), 112 - curChestplate.getDurability());
+						}
+						if(Check.wearingAdvancedJetpack(e.getPlayer())) {
+							ScoreboardInit.startScoreboard(e.getPlayer(), 528 - curChestplate.getDurability());
+						}
+					}
+					
+					if(Jetpack.playersDeniedParticles.contains(e.getPlayer().getName())) return;
 					final BukkitTask smoke = Bukkit.getServer().getScheduler().runTaskTimer(Jetpack.plugin, new Runnable() {
 						public void run() {
 							e.getPlayer().playEffect(e.getPlayer().getLocation(), Effect.SMOKE, 1);
@@ -103,12 +114,12 @@ public class JetpackEvents implements Listener {
 			}
 		}
 		
-//		if(!Check.canCraftSolarHelmet(player)) {
-//			if(e.getRecipe().getResult().equals(Jetpack.solarHelmet)) {
-//				e.setResult(Result.DENY);
-//				e.setCancelled(true);
-//			}
-//		}
+		if(!Check.canCraftSolarHelmet(player)) {
+			if(e.getRecipe().getResult().equals(Jetpack.solarHelmet)) {
+				e.setResult(Result.DENY);
+				e.setCancelled(true);
+			}
+		}
 	}
 	
 	@SuppressWarnings("deprecation")

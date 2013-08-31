@@ -62,15 +62,15 @@ public class Misc {
 		System.out.println("[Super Jetpack] Successfully registered Advanced Jetpack properties.");
 	}
 	
-//	public static void setupSolarHelmet() {
-//		ItemMeta solarMeta = Jetpack.solarHelmet.getItemMeta();
-//		solarMeta.setDisplayName(ChatColor.YELLOW + "Solar Regeneration Unit");
-//		ArrayList<String> list = new ArrayList<String>();
-//		list.add(ChatColor.GREEN + "Harness the power of the sun!");
-//		solarMeta.setLore(list);
-//		Jetpack.solarHelmet.setItemMeta(solarMeta);
-//		System.out.println("[Super Jetpack] Successfully registered Solar Helmet properties.");
-//	}
+	public static void setupSolarHelmet() {
+		ItemMeta solarMeta = Jetpack.solarHelmet.getItemMeta();
+		solarMeta.setDisplayName(ChatColor.YELLOW + "Solar Regeneration Unit");
+		ArrayList<String> list = new ArrayList<String>();
+		list.add(ChatColor.GREEN + "Harness the power of the sun!");
+		solarMeta.setLore(list);
+		Jetpack.solarHelmet.setItemMeta(solarMeta);
+		System.out.println("[Super Jetpack] Successfully registered Solar Helmet properties.");
+	}
 	
 	
 	public static void removeItemInHand(Player player) {
